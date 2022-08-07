@@ -1,16 +1,35 @@
 {
-  "name": "@gary-peterson/common-object-x",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gary-peterson/common-object-x.git"
-  },
+  "name": "@garyp/common-object-x",
   "version": "1.0.0",
-  "description": "",
+  "description": "common objects",
+  "keywords": [
+    "common",
+    "string",
+    "stream",
+    "number",
+    "dictinary",
+    "collection"
+  ],
+  "homepage": "https://github.com/gary-peterson/common-object-x.git#readme",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Foo <foo@abc.com>",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gary-peterson/common-object-x.git"
+  },
+  "author": "gp",
+  "license": "ISC",
+  "private": false,
+  "directories": {
+    "test": "test"
+  },
+  "bugs": {
+    "url": "https://github.com/gary-peterson/common-object-x/issues"
+  },
+  "dependencies": {
+    "npm-cli-login": "^1.0.0"
+  }
 }

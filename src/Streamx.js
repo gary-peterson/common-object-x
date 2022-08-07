@@ -18,14 +18,14 @@ class Streamx extends Objectx {
 
 	/* -- static methods --
 
+		conformCopyToLastIndex
+		from
+		coerce
+		coerceBracketPair
+		on
 		dq
 		isWhitespace
-		coerceBracketPair
-		coerce
-		conformCopyToLastIndex
-		on
 		sq
-		from
 	*/
 
 	asLines() {
@@ -112,7 +112,7 @@ class Streamx extends Objectx {
 			else
 				{next = this.upToAny(delims);
 				if(modifierFct != null)
-					next = modifierFct.evaluateFor(next);}
+					next = this.tools().evaluateWith(modifierFct,next);}
 			args.add(next);
 			if(this.objectEquals(this.peekAtOffset(- 1).toString(),closer))
 				return args;
@@ -139,7 +139,7 @@ class Streamx extends Objectx {
 		coll = this.newColl();
 		while(this.hasNext())
 			{var result;
-			result = evaluable.evaluateForWith(this,arg);
+			result = this.tools().evaluateWithWith(evaluable,this,arg);
 			if(result != null)
 				coll.add(result);}
 		
@@ -245,10 +245,10 @@ class Streamx extends Objectx {
 		
 		while(this.hasNext())
 			{
-				collDelims.zzunwrap().forEach(delim => {
+				for (let delim of collDelims.zzunwrap()) {
 					if(this.nextEquals(delim.toString()))
 					return delim
-				});
+				}
 			this.skip(1);}
 		return null;
 	}
@@ -261,10 +261,10 @@ class Streamx extends Objectx {
 			{if(this.atWhitespace())
 				return "";
 			
-				collDelims.zzunwrap().forEach(delim => {
+				for (let delim of collDelims.zzunwrap()) {
 					if(this.nextEquals(delim.toString()))
 					return delim
-				});
+				}
 			this.skip(1);}
 		return null;
 	}
@@ -278,27 +278,26 @@ class Streamx extends Objectx {
 	this.pos(p2 + 1);
 	return s;}
 		else
-			{var ans;
+			{//Returns string containing next char in stream
 
+	var ans;
 	ans = this.peek();
 	this.skip(1);
-	return ans;}
+	return ans.asString();}
 	}
 
 	nextEquals(aSubstring) {
-		var substring, remaining, hold;
+		var substring, remaining, hold, sub;
 		substring = aSubstring.toString().zzwrap();
 		remaining = this.remaining();
 		if(!(remaining >= substring.size()))
 			return false;
 		//Let's see if we have a match
 		hold = this.pos();
-		
-			substring.zzunwrap().forEach(ch => {
-				if(!(this.objectEquals(this.next(),ch)))
-				{this.pos(hold);
-				return false;}
-			});
+		for (var index=1; index<=substring.size(); index++)
+		 if(!(this.objectEquals(this.next(),substring.at(index))))
+		{this.pos(hold);
+		return false;}
 		this.pos(hold);
 		return true;
 	}
@@ -369,7 +368,7 @@ class Streamx extends Objectx {
 		
 		var delims, bracket, value, match;
 		this.sw();
-		delims = aDelims.asCollectionSafely().zzwrap();
+		delims = this.collClass().coerce(aDelims);
 		if(!(this.atQuote()))
 			{value = this.upToWhitespaceOrAny(delims);
 			this.sw();
@@ -644,7 +643,7 @@ class Streamx extends Objectx {
 		
 		p1 = this.pos();
 		hold = this.pos();
-		matchPositions = zzwrap(zzunwrap(delims).map(ea => this.matchPosOf(ea)));
+		matchPositions = (delims.zzunwrap().map(ea => this.matchPosOf(ea))).zzwrap();
 		min = matchPositions.min();
 		this.pos(min);
 		return this.copyFromTo(p1,this.pos() - 1);

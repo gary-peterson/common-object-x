@@ -7,7 +7,7 @@ const { Objectx } = require('./Objectx');
 "use strict";
 
 
-class CommonObjectAdapterx extends Objectx {
+class CommonObjectx extends Objectx {
 
 	constructor() {
 		super();
@@ -17,8 +17,8 @@ class CommonObjectAdapterx extends Objectx {
 
 	/* -- static methods --
 
-		fromRaw
 		on
+		fromRaw
 		from
 	*/
 
@@ -40,7 +40,7 @@ class CommonObjectAdapterx extends Objectx {
 		return false;
 	}
 
-	isCommonObjectAdapterz() {
+	isCommonObjectx() {
 		return true;
 	}
 
@@ -89,4 +89,4 @@ class CommonObjectAdapterx extends Objectx {
 }
 
 
-exports.CommonObjectAdapterx = CommonObjectAdapterx;
+exports.CommonObjectx = CommonObjectx;

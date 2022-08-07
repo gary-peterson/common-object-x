@@ -1,4 +1,4 @@
-const { Compositex } = require('./Compositex');
+const { Objectx } = require('./Objectx');
 const { Dictionaryx } = require('./Dictionaryx');
 
 //---------------------------------------------------------------------
@@ -8,7 +8,7 @@ const { Dictionaryx } = require('./Dictionaryx');
 "use strict";
 
 
-class RecursiveWrapperx extends Compositex {
+class RecursiveWrapperx extends Objectx {
 
 	constructor() {
 		super();
@@ -21,8 +21,8 @@ class RecursiveWrapperx extends Compositex {
 
 		wrap
 		assureWrapped
-		fromRoot
 		fromObject
+		fromRoot
 	*/
 
 	basicWrapDeeply() {
@@ -55,7 +55,7 @@ class RecursiveWrapperx extends Compositex {
 
 	wrapCollection() {
 		var thisObj = this;
-		function innerFunction1205(each)
+		function innerFunction1107(each)
 		{
 			var wrapped;
 			wrapped = thisObj.constructor.assureWrapped(each);
@@ -65,7 +65,7 @@ class RecursiveWrapperx extends Compositex {
 		}
 		var coll, newColl;
 		coll = this.root();
-		newColl = coll.zzunwrap().map(each => innerFunction1205(each)).zzwrap()
+		newColl = coll.zzunwrap().map(each => innerFunction1107(each)).zzwrap()
 		
 		coll.removeAll();
 		coll.addAll(newColl);
@@ -109,11 +109,11 @@ class RecursiveWrapperx extends Compositex {
 		/* Say we received a json object from a client,
 			we want to wrap the coll's and dict's with our wrappers */
 		
-		if(object.isWrapped())
+		if(object.isCommonObjectx())
 			return object;
-		if(isCollection(object))
+		if(this.tools().isCollection(object))
 			return object.zzwrap();
-		if(object.isDictionary())
+		if(this.tools().isDictionary(object))
 			return Dictionaryx.coerce(object);
 		return object;
 	}

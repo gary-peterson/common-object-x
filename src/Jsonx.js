@@ -1,6 +1,5 @@
 const { Objectx } = require('./Objectx');
 const { Dictionaryx } = require('./Dictionaryx');
-const { ObjectAdapterx } = require('./ObjectAdapterx');
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -20,15 +19,15 @@ class Jsonx extends Objectx {
 
 	/* -- static methods --
 
+		fromString
 		nullValueString
 		on
-		convertDictToString
-		coerceDict
+		fromObject
 		defT
-		fromString
+		coerceDict
 		listDelims
 		coerceDeflatedString
-		fromObject
+		convertDictToString
 	*/
 
 	asString() {
@@ -268,7 +267,7 @@ class Jsonx extends Objectx {
 		temp1.upTo(':');
 		temp1.sw();
 		value = this.parseValue();
-		return ObjectAdapterx.on(key).pairWith(value);
+		return this.tools().pairWith(key,value);
 	}
 
 	parseValue() {

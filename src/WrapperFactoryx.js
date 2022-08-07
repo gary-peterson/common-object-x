@@ -1,8 +1,8 @@
+const { Booleanx } = require('./Booleanx');
 const { Collectionx } = require('./Collectionx');
 const { Dictionaryx } = require('./Dictionaryx');
 const { Numberx } = require('./Numberx');
 const { Stringx } = require('./Stringx');
-const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -31,11 +31,16 @@ class WrapperFactoryx {
 	}
 
 	static wrap(arg) {
+		//Manual
 		if (arg == null) return arg;
-		if (arg instanceof CommonObjectAdapterx)
+		if (arg.isCommonObjectx())
 			return arg;
 		if (typeof arg === typeof "a")
 			return Stringx.on(arg);
+
+		if (typeof arg === typeof true)
+			return Booleanx.on(arg);
+
 		if ((typeof arg === typeof 1) || (typeof arg === typeof 1.5))
 			return Numberx.on(arg);
 		if (arg instanceof Array)

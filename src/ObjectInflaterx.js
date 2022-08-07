@@ -1,6 +1,5 @@
-const { Compositex } = require('./Compositex');
-const { ObjectDeflaterx } = require('./ObjectDeflaterx');
 const { Objectx } = require('./Objectx');
+const { ObjectDeflaterx } = require('./ObjectDeflaterx');
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -9,7 +8,7 @@ const { Objectx } = require('./Objectx');
 "use strict";
 
 
-class ObjectInflaterx extends Compositex {
+class ObjectInflaterx extends Objectx {
 
 	constructor() {
 		super();
@@ -20,8 +19,8 @@ class ObjectInflaterx extends Compositex {
 
 	/* -- static methods --
 
-		inflate
 		fromObject
+		inflate
 		zinflateRecursivelyOLD
 	*/
 
@@ -36,7 +35,7 @@ class ObjectInflaterx extends Compositex {
 	}
 
 	inflateCollection(wrapped) {
-		return zzwrap(zzunwrap(wrapped).map(each => this.constructor.inflate(each)));
+		return (wrapped.zzunwrap().map(each => this.constructor.inflate(each))).zzwrap();
 	}
 
 	inflateDictionary(dict) {
@@ -49,7 +48,7 @@ class ObjectInflaterx extends Compositex {
 			return this.constructor.inflate(dict);
 		
 		//Okay, we have type key, instantiate object, inflate it, return it
-		className = this.at(key);
+		className = dict.at(key);
 		
 		errorTemplate = "ERROR. Could not find class -- %s -- check %s";
 		objectClass = Objectx.commonClassLib().at("Collectionx");
@@ -98,7 +97,7 @@ class ObjectInflaterx extends Compositex {
 	//Class Methods
 
 	static zinflateRecursivelyOLD(o) {
-		if(this.tool().isPrim(o.zzunwrap()))
+		if(this.tools().isPrim(o.zzunwrap()))
 			return o.zzwrap();
 		return this.inflate(o);
 	}

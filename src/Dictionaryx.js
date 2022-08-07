@@ -1,4 +1,4 @@
-const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
+const { CommonObjectx } = require('./CommonObjectx');
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -7,7 +7,7 @@ const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
 "use strict";
 
 
-class Dictionaryx extends CommonObjectAdapterx {
+class Dictionaryx extends CommonObjectx {
 
 	constructor() {
 		super();
@@ -16,8 +16,9 @@ class Dictionaryx extends CommonObjectAdapterx {
 
 	/* -- static methods --
 
-		fromString
+		coerce
 		testKeys
+		fromString
 	*/
 
 	add(pair) {
@@ -31,6 +32,10 @@ class Dictionaryx extends CommonObjectAdapterx {
 
 	associationPairs() {
 		return (this.keys().zzunwrap().map(key => this.collClass().withWith(key,this.at(key)))).zzwrap();
+	}
+
+	associations() {
+		return (this.associationPairs().zzunwrap().map(pair => this.tools().keyValue(pair.first(),pair.last()))).zzwrap();
 	}
 
 	asVstring() {
@@ -49,7 +54,7 @@ class Dictionaryx extends CommonObjectAdapterx {
 	}
 
 	atIfAbsent(key, block) {
-		if(this.hasKey(key))
+		if(this.includesKey(key))
 			return this.at(key);
 		return this.tools().evaluateBlock(block);
 	}
@@ -99,6 +104,11 @@ class Dictionaryx extends CommonObjectAdapterx {
 
 	hasKey(key) {
 		//Manual
+		return this.includesKey(key);
+	}
+
+	includesKey(key) {
+		//Manual
 		return this.raw().hasOwnProperty(key);
 	}
 
@@ -126,6 +136,10 @@ class Dictionaryx extends CommonObjectAdapterx {
 		return this.collClass().from(Object.keys(this.raw()));
 	}
 
+	raw(aRaw) {
+		return super.raw(aRaw);
+	}
+
 	removeKey(key) {
 		//Returns true is key is deleted, or false if key does not exist
 		//Manual
@@ -148,6 +162,10 @@ class Dictionaryx extends CommonObjectAdapterx {
 				dict.atPut(pair.first(),pair.last())
 			});
 		return dict;
+	}
+
+	static coerce(obj) {
+		return this.tools().isKindOf(obj,this) ? obj : this.on(obj)
 	}
 
 	static testKeys() {

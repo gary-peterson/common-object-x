@@ -1,4 +1,4 @@
-const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
+const { CommonObjectx } = require('./CommonObjectx');
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -7,7 +7,7 @@ const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
 "use strict";
 
 
-class Booleanx extends CommonObjectAdapterx {
+class Booleanx extends CommonObjectx {
 
 	constructor() {
 		super();

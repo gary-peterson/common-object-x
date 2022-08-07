@@ -16,24 +16,24 @@ class Objectx extends Compositex {
 
 	/* -- static methods --
 
-		newColl
+		inflateObject
 		newRawColl
 		newRawDict
+		hasMethod
 		toolsBlt
-		recursiveWrapperxClass
+		commonObjectClass
 		log
-		newStream
 		collClass
 		dictClass
 		newOc
+		newStream
 		objectInflaterClass
 		objectDeflaterClass
 		newDict
-		hasMethod
-		inflateObject
+		recursiveWrapperClass
 		streamClass
 		commonClassLibBlt
-		commonObjectAdapterClass
+		newColl
 		jsonClass
 		mathBlt
 	*/
@@ -96,7 +96,7 @@ class Objectx extends Compositex {
 	}
 
 	equals(other) {
-		return this.implementedBySubclass();
+		return this.basicEquals(other);
 	}
 
 	equalsEff(other) {
@@ -108,6 +108,14 @@ class Objectx extends Compositex {
 	hasMethod(selector) {
 		//Manual
 		return this.constructor.compiledMethodAt(selector) != null;
+	}
+
+	inflateFromDic(dic) {
+		//virtual optional;
+	}
+
+	isObjectx() {
+		return true;
 	}
 
 	jsonClass() {
@@ -157,7 +165,7 @@ class Objectx extends Compositex {
 	}
 
 	wrapRawDeeply() {
-		return this.constructor.recursiveWrapperxClass().wrap(this);
+		return this.constructor.recursiveWrapperClass().wrap(this);
 	}
 	//Class Methods
 
@@ -182,8 +190,8 @@ class Objectx extends Compositex {
 		return new this.dictClass()()
 	}
 
-	static commonObjectAdapterClass() {
-		return this.commonClassLib().at("CommonObjectAdapterx")
+	static commonObjectClass() {
+		return this.commonClassLib().at("CommonObjectx")
 	}
 
 	static toolsBlt() {
@@ -195,13 +203,13 @@ class Objectx extends Compositex {
 		return this.tools().newRawColl()
 	}
 
-	static recursiveWrapperxClass() {
-		return this.commonClassLib().at("RecursiveWrapperxClass")
-	}
-
 	static mathBlt() {
 		//Js needs method
 		return null;
+	}
+
+	static recursiveWrapperClass() {
+		return this.commonClassLib().at("RecursiveWrapperx")
 	}
 
 	static newRawDict() {

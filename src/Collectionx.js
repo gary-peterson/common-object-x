@@ -1,4 +1,4 @@
-const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
+const { CommonObjectx } = require('./CommonObjectx');
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -7,7 +7,7 @@ const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
 "use strict";
 
 
-class Collectionx extends CommonObjectAdapterx {
+class Collectionx extends CommonObjectx {
 
 	constructor() {
 		super();
@@ -16,39 +16,40 @@ class Collectionx extends CommonObjectAdapterx {
 
 	/* -- static methods --
 
-		fromCompositeFormattedNumsString
-		with
-		withWith
-		withWithWithWith
-		fromFormattedNumsString
-		withWithWith
-		fromRepeat
-		fromNumsString
-		fromCompositeNumsString
 		fromRaw
+		fromNumsString
+		withWith
+		fromFormattedNumsString
+		intervalFromTo
+		fromCompositeNumsString
+		fromCompositeFormattedNumsString
 		numsSetFrom
+		withWithWithWith
+		withWithWith
+		with
+		coerce
+		fromRepeat
 		fromFreeForm
 		fromFreeFormNums
-		intervalFromTo
 	*/
 
 	add(elem) {
-	    //Manual
-	    this.raw().push(elem);
+		//Manual
+		this.raw().push(elem);
 	}
 
 	addBeforeIndex(elem, index) {
-	    const jsIndex = this.tools().privateIndexForPublic(index);
-	    //splice (2, 0, 19) is just like --> coll add: 19 beforeIndex: 2
-	    //splice in "elem" at jsIndex (deletions = 0)
-	    this.coll().splice(jsIndex, 0, elem);
+		const jsIndex = this.tools().privateIndexForPublic(index);
+		//splice (2, 0, 19) is just like --> coll add: 19 beforeIndex: 2
+		//splice in "elem" at jsIndex (deletions = 0)
+		this.coll().splice(jsIndex, 0, elem);
 	}
 
 	addAll(coll) {
-	    //Manual
-	    var raw = coll.zzunwrap();
-	    for (var ea of raw)
-	        this.add(ea);
+		//Manual
+		var raw = coll.zzunwrap();
+		for (var ea of raw)
+			this.add(ea);
 	}
 
 	addExt(elemOrColl) {
@@ -93,16 +94,16 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	asHstring() {
-	    return this.raw().map(ea => ea.toString()).join(" ");
+		return this.raw().map(ea => ea.toString()).join(" ");
 	}
 
 	asVstring() {
-	    return this.raw().map(ea => ea.toString()).join("\n");
+		return this.raw().map(ea => ea.toString()).join("\n");
 	}
 
 	at(index) {
-	    //Manual
-	    return this.raw()[this.tools().privateIndexForPublic(index)];
+		//Manual
+		return this.raw()[this.tools().privateIndexForPublic(index)];
 	}
 
 	atIfAbsent(smalltalkIndex, block) {
@@ -125,8 +126,8 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	collect(fct) {
-	    //Manual
-	    return this.raw().map(elem => fct.evaluateFor(elem));
+		//Manual
+		return this.raw().map(elem => fct.evaluateFor(elem));
 	}
 
 	copyO() {
@@ -140,9 +141,9 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	doWithIndex(fct) {
-	    var coll = this.raw();
-	    for (var index in coll)
-	        fct(coll[index], index);
+		var coll = this.raw();
+		for (var index in coll)
+			fct(coll[index], index);
 	}
 
 	equalsEff(other) {
@@ -183,8 +184,8 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	indexFor(fct) {
-	    //Manual
-	    return this.publicIndexForPrivate(this.coll().findIndex(fct));
+		//Manual
+		return this.tools().publicIndexForPrivate(this.coll().findIndex(fct));
 	}
 
 	indexOf(elem) {
@@ -228,8 +229,8 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	indexOfPrim(elem) {
-	    //Manual
-	    return this.publicIndexForPrivate(this.raw().indexOf(elem));
+		//Manual
+		return this.tools().publicIndexForPrivate(this.raw().indexOf(elem));
 	}
 
 	initialize() {
@@ -295,12 +296,12 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	reduceWith(binaryFct, initialValue) {
-	    //Manual
-	    return this.raw().reduce(binaryFct, initialValue);
+		//Manual
+		return this.raw().reduce(binaryFct, initialValue);
 	}
 
 	reject(selectFct) {
-	    return this.select((each) => !selectFct(each));
+		return this.select((each) => !selectFct(each));
 	}
 
 	remove(elem) {
@@ -315,11 +316,11 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	removeIndex(index) {
-	    //Manual
-	    var jsindex = this.tools().privateIndexForPublic(index);
-	    //splice() - first param is 0-based index to start remove, 2nd is # of elems to remove
-	    //With "splice" elements are adderd/removed in-place
-	    this.raw().splice(jsindex, 1);
+		//Manual
+		var jsindex = this.tools().privateIndexForPublic(index);
+		//splice() - first param is 0-based index to start remove, 2nd is # of elems to remove
+		//With "splice" elements are adderd/removed in-place
+		this.raw().splice(jsindex, 1);
 	}
 
 	removeKey(key) {
@@ -347,12 +348,12 @@ class Collectionx extends CommonObjectAdapterx {
 	}
 
 	select(selectFct) {
-	    return zzwrap(this.coll().zzunwrap().filter(each => selectFct(each)));
+		return zzwrap(this.coll().zzunwrap().filter(each => selectFct(each)));
 	}
 
 	size() {
-	    //Manual
-	    return this.raw().length;
+		//Manual
+		return this.raw().length;
 	}
 
 	sliceFrom(start) {
@@ -386,6 +387,12 @@ class Collectionx extends CommonObjectAdapterx {
 		return index >= 1 ? this.at(index).secondL() : null;
 	}
 	//Class Methods
+
+	static coerce(arg) {
+		if(arg.isCommonObjectx() && arg.isCollectionable())
+			return arg;
+		return this.tools().isCollection(arg) ? this.on(arg) : this.with(arg);
+	}
 
 	static fromNumsString(aString) {
 		/* Free Form  Result

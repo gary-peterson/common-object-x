@@ -1,4 +1,4 @@
-const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
+const { CommonObjectx } = require('./CommonObjectx');
 const { Collectionx } = require('./Collectionx');
 
 //---------------------------------------------------------------------
@@ -8,7 +8,7 @@ const { Collectionx } = require('./Collectionx');
 "use strict";
 
 
-class ObjectAdapterx extends CommonObjectAdapterx {
+class ObjectAdapterx extends CommonObjectx {
 
 	constructor() {
 		super();

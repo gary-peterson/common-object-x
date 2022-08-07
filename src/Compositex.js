@@ -20,9 +20,9 @@ class Compositex {
 	}
 
 	addAll(coll) {
-		coll.zzunwrap().forEach(ea => {
+		for (let ea of coll.zzunwrap()) {
 				this.basicAdd(ea)
-			});
+			}
 		this.sizeChanged();
 	}
 
@@ -77,9 +77,9 @@ class Compositex {
 		parts = arg.zastr().split($);
 		result = this;
 		
-			parts.zzunwrap().forEach(nm => {
+			for (let nm of parts.zzunwrap()) {
 				result = result.find(nm)
-			});
+			}
 		return result;
 	}
 
@@ -197,6 +197,26 @@ String.prototype.paramReplace1 = function(varArgs) {
 	for (var each of arguments)
 		s = s.replace("%s", String(each));
 	return s;
+}
+
+Object.prototype.isObjectx = function() {
+	return false;
+}
+
+Object.prototype.isCommonObjectx = function() {
+	return false;
+}
+
+Object.prototype.isCollection = function() {
+	return Array.isArray(this.valueOf());
+}
+
+String.prototype.isEmpty = function() {
+	return this.length === 0;
+}
+
+Array.prototype.isEmpty = function() {
+	return this.length === 0;
 }
 
 

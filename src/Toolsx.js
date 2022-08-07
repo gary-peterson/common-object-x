@@ -1,5 +1,4 @@
 const { Compositex } = require('./Compositex');
-const { Pointx } = require('./Pointx');
 const { Streamx } = require('./Streamx');
 
 //---------------------------------------------------------------------
@@ -42,6 +41,10 @@ class Toolsx extends Compositex {
 	
 	//----------------------------------
 	
+
+	associationClass() {
+		return this.commonClassLib().at("Associationx");
+	}
 
 	canBeDictionary(obj) {
 		//Manual
@@ -150,6 +153,16 @@ class Toolsx extends Compositex {
 		return "\n";
 	}
 
+	evaluateWith(evaluable,arg1) {
+		//Manual
+		return evaluable(arg1);
+	}
+
+	evaluateWithWith(evaluable,arg1,arg2) {
+		//Manual
+		return evaluable(arg1, arg2);
+	}
+
 	evaluateBlock(block) {
 		//Manual
 		//block is a jscript fct
@@ -175,6 +188,11 @@ class Toolsx extends Compositex {
 		//Manual
 		var aClass = this.coerceClass(classOrNm);
 		return o instanceof aClass;
+	}
+
+	isMemberOf(o, classOrNm) {
+		//Manual
+		return this.coerceClass(o) === this.coerceClass(classOrNm);
 	}
 
 	isBlank(aObject) {
@@ -269,6 +287,10 @@ class Toolsx extends Compositex {
 		return (new RegExp(/^\s*$/)).test(str);
 	}
 
+	keyValue(key, value) {
+		return this.associationClass().keyValue(key,value);
+	}
+
 	lf() {
 		//Manual
 		return "\n";
@@ -309,7 +331,7 @@ class Toolsx extends Compositex {
 	}
 
 	pointClass() {
-		return Pointx;
+		return this.commonClassLib().at("Pointx");
 	}
 
 	privateIndexForPublic(smalltalkIndex) {

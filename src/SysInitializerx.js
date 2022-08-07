@@ -1,7 +1,7 @@
 const { Associationx } = require('./Associationx');
 const { ClassLibx } = require('./ClassLibx');
 const { Collectionx } = require('./Collectionx');
-const { CommonObjectAdapterx } = require('./CommonObjectAdapterx');
+const { CommonObjectx } = require('./CommonObjectx');
 const { Dictionaryx } = require('./Dictionaryx');
 const { Jsonx } = require('./Jsonx');
 const { Mathx } = require('./Mathx');
@@ -50,7 +50,7 @@ class SysInitializerx {
 		WrapperFactoryx.loadCode();
 		classLib = new ClassLibx();
 		
-		classLib.add(CommonObjectAdapterx);
+		classLib.add(CommonObjectx);
 		classLib.add(Collectionx);
 		classLib.add(Dictionaryx);
 		classLib.add(Numberx);

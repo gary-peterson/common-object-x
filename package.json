@@ -1,0 +1,16 @@
+{
+  "name": "@gary-peterson/common-object-x",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gary-peterson/common-object-x.git"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Foo <foo@abc.com>",
+  "license": "ISC"
+}

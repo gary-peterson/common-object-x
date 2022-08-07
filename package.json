@@ -1,6 +1,6 @@
 {
   "name": "@garyp/common-object-x",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "common objects",
   "keywords": [
     "common",
@@ -28,8 +28,5 @@
   },
   "bugs": {
     "url": "https://github.com/gary-peterson/common-object-x/issues"
-  },
-  "dependencies": {
-    "npm-cli-login": "^1.0.0"
   }
 }

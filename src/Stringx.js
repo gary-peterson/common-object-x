@@ -1,4 +1,5 @@
 const { CommonObjectx } = require('./CommonObjectx');
+const { Streamx } = require('./Streamx');
 const { Compositex } = require('./Compositex');
 
 //---------------------------------------------------------------------
@@ -20,6 +21,14 @@ class Stringx extends CommonObjectx {
 		return (pair.first().toString() + this.toString()) + pair.last().toString();
 	}
 
+	asCollection() {
+		var coll;
+		coll = this.newColl();
+		for (var index=1; index<=this.size(); index++)
+		 coll.add(this.at(index));
+		return coll;
+	}
+
 	asDq() {
 		return this.asBracketedWith('"');
 	}
@@ -33,12 +42,16 @@ class Stringx extends CommonObjectx {
 	}
 
 	asLowerCase() {
-	    //Manual
-	    return this.zzunwrap().toLowerCase();
+		//Manual
+		return this.zzunwrap().toLowerCase();
 	}
 
 	asQuotedWhiteStrings() {
 		return this.newStream(this.raw()).parseQuotedWhiteStrings();
+	}
+
+	asStream() {
+		return Streamx.on(this.raw());
 	}
 
 	asString() {
@@ -62,8 +75,8 @@ class Stringx extends CommonObjectx {
 	}
 
 	asUpperCase() {
-	    //Manual
-	    return this.zzunwrap().toUpperCase();
+		//Manual
+		return this.zzunwrap().toUpperCase();
 	}
 
 	asWhitespaceStrings() {
@@ -71,7 +84,7 @@ class Stringx extends CommonObjectx {
 	}
 
 	at(smalltalkIndex) {
-	    return this.raw()[this.tools().privateIndexForPublic(smalltalkIndex)];
+		return this.raw()[this.tools().privateIndexForPublic(smalltalkIndex)];
 	}
 
 	basicAsDeflated() {
@@ -114,9 +127,9 @@ class Stringx extends CommonObjectx {
 	}
 
 	do(block) {
-		this.raw().zzunwrap().forEach(each => {
+		for (let each of this.raw().zzunwrap()) {
 				block(each);
-			});
+			};
 	}
 
 	endsWith(substring) {
@@ -138,10 +151,10 @@ class Stringx extends CommonObjectx {
 	}
 
 	equalsIgnoreCase(aString) {
-	    //Manual
-	    //base means compare base (no case), e.g. aa=aa, Aa=aa, a~=b
-	    //also see the localeCompare #numeric option
-	    return this.zzunwrap().localeCompare(aString.zzunwrap(), undefined, { sensitivity: 'base' }) == 0;
+		//Manual
+		//base means compare base (no case), e.g. aa=aa, Aa=aa, a~=b
+		//also see the localeCompare #numeric option
+		return this.zzunwrap().localeCompare(aString.zzunwrap(), undefined, { sensitivity: 'base' }) == 0;
 	}
 
 	first() {
@@ -162,8 +175,8 @@ class Stringx extends CommonObjectx {
 	}
 
 	isAllDigits() {
-	    //Manual
-	    return /^\d+$/.test(this.raw());
+		//Manual
+		return /^\d+$/.test(this.raw());
 	}
 
 	isBlank() {
@@ -181,13 +194,13 @@ class Stringx extends CommonObjectx {
 	}
 
 	isValidFloat() {
-	    //Manual
-	    return /^[+-]?\d+[.]?\d*$/.test(this.raw());
+		//Manual
+		return /^[+-]?\d+[.]?\d*$/.test(this.raw());
 	}
 
 	isValidInteger() {
-	    //Manual
-	    return /^[+-]?\d+$/.test(this.raw());
+		//Manual
+		return /^[+-]?\d+$/.test(this.raw());
 	}
 
 	last() {
@@ -211,13 +224,13 @@ class Stringx extends CommonObjectx {
 	}
 
 	replaceAllWith(s1, s2) {
-	    //Manual
-	    return this.raw().replace(new RegExp(s1,"g"), s2);
+		//Manual
+		return this.raw().replace(new RegExp(s1,"g"), s2);
 	}
 
 	replaceFirstWith(s1, s2) {
-	    //Manual
-	    return this.raw().replace(s1, s2);
+		//Manual
+		return this.raw().replace(s1, s2);
 	}
 
 	second() {
@@ -225,7 +238,7 @@ class Stringx extends CommonObjectx {
 	}
 
 	size() {
-	    return this.raw().length;
+		return this.raw().length;
 	}
 
 	sliceFrom(start) {

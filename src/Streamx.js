@@ -18,14 +18,14 @@ class Streamx extends Objectx {
 
 	/* -- static methods --
 
-		conformCopyToLastIndex
-		from
-		coerce
-		coerceBracketPair
-		on
 		dq
 		isWhitespace
+		coerce
+		conformCopyToLastIndex
 		sq
+		from
+		on
+		coerceBracketPair
 	*/
 
 	asLines() {
@@ -50,7 +50,7 @@ class Streamx extends Objectx {
 	}
 
 	asString() {
-		return this.contents();
+		return this.toString();
 	}
 
 	at(aPos) {
@@ -194,6 +194,18 @@ class Streamx extends Objectx {
 			this.skip(right.size());
 			prev = this.pos();}
 		return newStrm.zzwrap();
+	}
+
+	extractLineComments(delim) {
+		//arg may be string or pair
+		
+		var newLines;
+		newLines = this.newColl();
+		
+			for (let line of this.asLines().zzunwrap()) {
+				newLines.add(line.zzwrap().upTo(delim))
+			}
+		return this.constructor.on(newLines.join(this.tools().endLineString()));
 	}
 
 	hasNext() {
@@ -520,6 +532,13 @@ class Streamx extends Objectx {
 		return this.buffer()[index];
 	}
 
+	rejectFor(fct) {
+		/* Note -- we use #rejectFor: here rather than #reject: 
+			to bypass a forced unwrap (not desired in this case) for #reject: */
+		
+		return this.selectFor(each => !this.tools().evaluateWith(fct,each));
+	}
+
 	rem() {
 		return this.next(this.remaining());
 	}
@@ -530,6 +549,21 @@ class Streamx extends Objectx {
 
 	reset() {
 		this.pos(0);
+	}
+
+	selectFor(fct) {
+		/* Note -- we use #selectFor: here rather than #select 
+			to bypass a forced unwrap (not desired in this case) for #select */
+		
+		var newStrm;
+		newStrm = this.newStream("");
+		while(!(this.atEnd()))
+			{var next;
+			next = this.next();
+			if(this.tools().evaluateWith(fct,next))
+				newStrm.show(next);}
+		newStrm.reset();
+		return newStrm;
 	}
 
 	setToEnd() {
@@ -701,7 +735,7 @@ class Streamx extends Objectx {
 	}
 
 	static coerceBracketPair(arg) {
-		return arg.isString() ? this.collClass().withWith(arg,arg) : arg
+		return arg.isString() ? this.collClass().withWith(arg,arg) : arg.zzwrap()
 	}
 
 	static dq() {

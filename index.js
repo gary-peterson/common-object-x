@@ -9,7 +9,8 @@ const
 	{Dictionaryx} = require('./src/Dictionaryx'),
 	{Numberx} = require('./src/Numberx'),
 	{Streamx} = require('./src/Streamx'),
-	{SysInitializerx} = require('./src/SysInitializerx');
+	{SysInitializerx} = require('./src/SysInitializerx'),
+	{WrapperFactoryx} = require('./src/WrapperFactoryx');
 
 //---------------------------------------------------
 
@@ -21,3 +22,4 @@ exports.Dictionaryx = Dictionaryx;
 exports.Numberx = Numberx;
 exports.Streamx = Streamx;
 exports.SysInitializerx = SysInitializerx;
+exports.WrapperFactoryx = WrapperFactoryx;

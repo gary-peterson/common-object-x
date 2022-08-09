@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b69a6985-51a1-4b3e-9cde-f25df5996ada" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json.old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Associationx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Associationx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Booleanx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Booleanx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collectionx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collectionx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CommonObjectAdapterx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Compositex.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compositex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dictionaryx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dictionaryx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jsonx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jsonx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Numberx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Numberx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ObjectAdapterx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectAdapterx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ObjectInflaterx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectInflaterx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Objectx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Objectx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RecursiveWrapperx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecursiveWrapperx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Streamx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Streamx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Stringx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stringx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SysInitializerx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SysInitializerx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Toolsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Toolsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WrapperFactoryx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/WrapperFactoryx.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +67,7 @@
       <workItem from="1659831299117" duration="2592000" />
       <workItem from="1659861212274" duration="37000" />
       <workItem from="1659865871122" duration="10713000" />
+      <workItem from="1660052130022" duration="258000" />
     </task>
     <servers />
   </component>

@@ -166,7 +166,8 @@ class Stringx extends CommonObjectx {
 	}
 
 	indexOf(charOrString) {
-		return this.publicIndexForPrivate(this.raw().zastr().indexOf(charOrString));
+		//Manual
+		return this.tools().publicIndexForPrivate(this.raw().indexOf(charOrString));
 	}
 
 	initialize() {
@@ -280,36 +281,40 @@ class Stringx extends CommonObjectx {
 
 
 String.prototype.sliceFromTo = function(from, to) {
-    return this.slice(from, to);
+	return this.slice(from, to);
 }
 
 String.prototype.sliceFrom = function(from) {
-    return this.slice(from);
+	return this.slice(from);
 }
 
 String.prototype.sliceTo = function(to) {
-    return this.slice(0, to);
+	return this.slice(0, to);
 }
 
 String.prototype.withAppended = function(other) {
-    return this + other;
+	return this + other;
 }
 
 String.prototype.asInteger = function() {
-    return Compositex.helperClass().coerceInteger(this);
+	return Compositex.helperClass().coerceInteger(this);
 }
 
 String.prototype.asFloat = function() {
-    return Compositex.helperClass().coerceFloat(this);
+	return Compositex.helperClass().coerceFloat(this);
 }
 
 String.prototype.isBlank = function() {
-    return Compositex.stringClass().on(this).isBlank();
+	return Compositex.stringClass().on(this).isBlank();
 }
 
 String.prototype.len = function() {
-    //alias convenience -- cannot declare "length()" as "length" is property
-    return this.length;
+	//alias convenience -- cannot declare "length()" as "length" is property
+	return this.length;
+}
+
+String.prototype.zastr = function() {
+	return Stringx.on(this.valueOf());
 }
 
 

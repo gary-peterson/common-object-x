@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b69a6985-51a1-4b3e-9cde-f25df5996ada" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Stringx.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stringx.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,9 @@
       <workItem from="1659831299117" duration="2592000" />
       <workItem from="1659861212274" duration="37000" />
       <workItem from="1659865871122" duration="10713000" />
-      <workItem from="1660052130022" duration="258000" />
+      <workItem from="1660052130022" duration="856000" />
+      <workItem from="1660062893757" duration="8000" />
+      <workItem from="1660106557480" duration="7000" />
     </task>
     <servers />
   </component>

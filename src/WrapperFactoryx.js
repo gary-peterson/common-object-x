@@ -61,7 +61,6 @@ Object.prototype.zzwrap = function() {
 	return WrapperFactoryx.wrap(this.valueOf());
 }
 
-
-
-
 exports.WrapperFactoryx = WrapperFactoryx;
+exports.zzunwrap = zzunwrap;
+exports.zzwrap = zzwrap;
